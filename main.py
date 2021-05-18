@@ -18,10 +18,10 @@ def the_prequal_meat_function():
     try:
         inputJson = request.get_json()
     except:
-        responseJson= """ "OMF_decision_model_Response": {
+        responseJson= """ {"OMF_decision_model_Response": {
   "response": {
 	"status": 1, "errMsg" : "request is not valid json"
-	} }
+	} } }
 	"""
         return responseJson
     fico=0
@@ -35,7 +35,7 @@ def the_prequal_meat_function():
     responseJson=''
     if fico > 650:
         ## Need a response record for each Tier, per product for: Application(chnum=0), Borrower(chnum=1), and SecondaryApplicant (chnum=2)
-        responseJson= """ "OMF_decision_model_Response": {
+        responseJson= """ {"OMF_decision_model_Response": {
     "response": {
         "status": 0,
         "tiers": [
@@ -85,10 +85,10 @@ def the_prequal_meat_function():
             {"tierId":8,"chnum":2,"decision":"A","productType":"HIS","maxPayment":123.45,"maxDTI":23,"stipRsn":null},
             {"tierId":8,"chnum":2,"decision":"D","productType":"HIN","maxPayment":0,"maxDTI":0,"stipRsn":"D04"}
          ]
-    } }
+    } } }
 """
     else:
-        responseJson= """ "OMF_decision_model_Response": {
+        responseJson= """ {"OMF_decision_model_Response": {
     "response": {
         "status": 0,
         "tiers": [
@@ -138,7 +138,7 @@ def the_prequal_meat_function():
             {"tierId":8,"chnum":2,"decision":"A","productType":"HIS","maxPayment":123.45,"maxDTI":23,"stipRsn":null},
             {"tierId":8,"chnum":2,"decision":"D","productType":"HIN","maxPayment":0,"maxDTI":0,"stipRsn":"D04"}
          ]
-    } }
+    } } }
 """
         
     return responseJson
@@ -148,10 +148,10 @@ def the_meat_function():
     try:
         inputJson = request.get_json()
     except:
-        responseJson= """ "OMF_decision_model_Response": {
+        responseJson= """ {"OMF_decision_model_Response": {
   "response": {
 	"status": 1, "errMsg" : "request is not valid json"
-	} }
+	} } }
 	"""
         return responseJson
     fico=0
@@ -181,7 +181,7 @@ def the_meat_function():
     #print(fico)
     responseJson=''
     if fico > 650:
-        responseJson= """ "OMF_decision_model_Response": {
+        responseJson= """ {"OMF_decision_model_Response": {
         "response": {
 	"status": 0,
 	"decisionCode": "APPROVE",
@@ -191,10 +191,10 @@ def the_meat_function():
 	"AdverseAction" : { "code1" :"D11" , "code2" :"D11" , "code3" :"D11" , "code4" :"D11" },
 	"StipList" : "STIP111,STIP222,STIP333"
 	}
-        }
+        } }
         """
     else:
-         responseJson= """ "OMF_decision_model_Response": {
+         responseJson= """ {"OMF_decision_model_Response": {
         "response": {
 	"status": 0,
 	"decisionCode": "DECLINE",
@@ -204,7 +204,7 @@ def the_meat_function():
 	"AdverseAction" : { "code1" :"D11" , "code2" :"D11" , "code3" :"D11" , "code4" :"D11" },
 	"StipList" : "STIP111,STIP222,STIP333"
 	}
-        }
+        } }
         """
 
     return responseJson
